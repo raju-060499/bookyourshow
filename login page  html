@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>MoviePass | Login</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #101820;
+        color: #171717;
+    }
+
+    /* Navigation Bar */
+
+    header {
+        height: 75px;
+        background: #101820;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 5%;
+        gap: 20px;
+    }
+
+    .logo {
+        font-size: 28px;
+        font-weight: bold;
+        white-space: nowrap;
+    }
+
+    .logo span {
+        background: #f52249;
+        padding: 5px;
+        border-radius: 6px;
+    }
+
+    nav {
+        display: flex;
+        gap: 25px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 15px;
+    }
+
+    .header-login {
+        background: #f52249;
+        color: white;
+        border: none;
+        padding: 10px 22px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    /* Main Layout */
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: calc(100vh - 75px);
+    }
+
+    /* Left Cinema Panel */
+
+    .cinema {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 55px;
+        color: white;
+        background:
+            radial-gradient(
+                ellipse at 70% 40%,
+                rgba(255, 91, 31, 0.45),
+                transparent 45%
+            ),
+            linear-gradient(
+                135deg,
+                #080b12,
+                #25202a,
+                #080b12
+            );
+    }
+
+    .cinema::after {
+        content: "🎬";
+        position: absolute;
+        right: 35px;
+        bottom: 40px;
+        font-size: 160px;
+        opacity: 0.12;
+    }
+
+    .cinema h1 {
+        font-size: 43px;
+        line-height: 1.25;
+        margin: 30px 0 20px;
+        max-width: 520px;
+    }
+
+    .cinema h1 span {
+        color: #ff3155;
+    }
+
+    .cinema p {
+        font-size: 18px;
+        line-height: 1.7;
+        color: #dedee3;
+        max-width: 420px;
+    }
+
+    .features {
+        display: flex;
+        gap: 25px;
+        margin-top: 55px;
+        flex-wrap: wrap;
+    }
+
+    .feature {
+        font-size: 14px;
+        color: #eeeeee;
+    }
+
+    .feature strong {
+        display: block;
+        color: #ff3155;
+        margin-bottom: 8px;
+    }
+
+    /* Right Login Panel */
+
+    .login-panel {
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+    }
+
+    .login-box {
+        width: 100%;
+        max-width: 440px;
+    }
+
+    .login-box h2 {
+        font-size: 36px;
+        margin-bottom: 12px;
+    }
+
+    .subtitle {
+        color: #687080;
+        margin-bottom: 35px;
+        line-height: 1.6;
+    }
+
+    .form-group {
+        margin-bottom: 22px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    input {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid #d4d8df;
+        border-radius: 8px;
+        font-size: 15px;
+        outline: none;
+        transition: 0.2s;
+    }
+
+    input:focus {
+        border-color: #f52249;
+        box-shadow: 0 0 0 3px rgba(245, 34, 73, 0.1);
+    }
+
+    .password-wrapper {
+        position: relative;
+    }
+
+    .password-wrapper input {
+        padding-right: 65px;
+    }
+
+    .toggle-password {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: #f52249;
+        cursor: pointer;
+        font-size: 13px;
+    }
+
+    .forgot {
+        display: block;
+        text-align: right;
+        margin-top: -8px;
+        margin-bottom: 25px;
+        color: #f52249;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .login-button {
+        width: 100%;
+        padding: 16px;
+        border: none;
+        border-radius: 8px;
+        background: #f52249;
+        color: white;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .login-button:hover {
+        background: #d9163b;
+        transform: translateY(-1px);
+    }
+
+    .divider {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin: 25px 0;
+        color: #777;
+    }
+
+    .divider::before,
+    .divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #dddddd;
+    }
+
+    .google-button {
+        width: 100%;
+        padding: 14px;
+        border: 1px solid #d4d8df;
+        background: white;
+        border-radius: 8px;
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    .google-button:hover {
+        background: #f7f7f7;
+    }
+
+    .signup {
+        text-align: center;
+        margin-top: 30px;
+        color: #687080;
+        font-size: 14px;
+    }
+
+    .signup a {
+        color: #f52249;
+        text-decoration: none;
+        font-weight: bold;
+        margin-left: 5px;
+    }
+
+    #message {
+        margin-top: 18px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    /* Responsive Design */
+
+    @media (max-width: 900px) {
+        header {
+            padding: 0 20px;
+        }
+
+        nav {
+            gap: 12px;
+        }
+
+        .container {
+            grid-template-columns: 1fr;
+        }
+
+        .cinema {
+            min-height: 350px;
+            padding: 35px;
+        }
+
+        .cinema h1 {
+            font-size: 32px;
+        }
+
+        .features {
+            margin-top: 25px;
+        }
+
+        .login-panel {
+            padding: 45px 25px;
+        }
+    }
+
+    @media (max-width: 560px) {
+        nav {
+            display: none;
+        }
+
+        .logo {
+            font-size: 23px;
+        }
+
+        .cinema {
+            min-height: 300px;
+            padding: 25px;
+        }
+
+        .cinema h1 {
+            font-size: 29px;
+        }
+
+        .cinema p {
+            font-size: 15px;
+        }
+
+        .features {
+            gap: 15px;
+        }
+
+        .login-box h2 {
+            font-size: 30px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- Navigation Bar -->
+
+<header>
+    <div class="logo">movie<span>pass</span></div>
+
+    <nav>
+        <a href="#">Movies</a>
+        <a href="#">Events</a>
+        <a href="#">Plays</a>
+        <a href="#">Sports</a>
+        <a href="#">Activities</a>
+    </nav>
+
+    <button class="header-login"
+            onclick="document.getElementById('email').focus()">
+        Login
+    </button>
+</header>
+
+<!-- Main Content -->
+
+<main class="container">
+
+    <!-- Cinema Section -->
+
+    <section class="cinema">
+
+        <div class="logo">movie<span>pass</span></div>
+
+        <h1>
+            Movies. Events.<br>
+            <span>Unforgettable</span> Moments.
+        </h1>
+
+        <p>
+            Book your next experience with just a click.
+            Discover movies, live events, plays and more.
+        </p>
+
+        <div class="features">
+
+            <div class="feature">
+                <strong>🎟 Tickets</strong>
+                Easy booking
+            </div>
+
+            <div class="feature">
+                <strong>🛡 Security</strong>
+                Safe experience
+            </div>
+
+            <div class="feature">
+                <strong>⚡ Instant</strong>
+                Quick confirmation
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Login Form -->
+
+    <section class="login-panel">
+
+        <div class="login-box">
+
+            <h2>Log In</h2>
+
+            <p class="subtitle">
+                Welcome back! Sign in to discover your next experience.
+            </p>
+
+            <form id="loginForm">
+
+                <div class="form-group">
+                    <label for="email">
+                        Mobile Number or Email
+                    </label>
+
+                    <input
+                        type="text"
+                        id="email"
+                        placeholder="Enter your mobile number or email"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="toggle-password"
+                            id="togglePassword"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <a href="#" class="forgot" id="forgotPassword">
+                    Forgot Password?
+                </a>
+
+                <button type="submit" class="login-button">
+                    Log In
+                </button>
+
+            </form>
+
+            <p id="message" role="status" aria-live="polite"></p>
+
+            <div class="divider">or</div>
+
+            <button type="button"
+                    class="google-button"
+                    id="googleLogin">
+                🌐 Continue with Google
+            </button>
+
+            <p class="signup">
+                Don't have an account?
+                <a href="#" id="signupLink">Sign Up</a>
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- JavaScript -->
+
+<script>
+    const loginForm = document.getElementById("loginForm");
+    const passwordInput = document.getElementById("password");
+    const message = document.getElementById("message");
+
+    // Show or hide password
+
+    document.getElementById("togglePassword")
+        .addEventListener("click", function () {
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                this.textContent = "Hide";
+            } else {
+                passwordInput.type = "password";
+                this.textContent = "Show";
+            }
+        });
+
+    // Demonstration login only
+
+    loginForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const email = document.getElementById("email").value.trim();
+        const password = passwordInput.value;
+
+        if (!email || !password) {
+            message.style.color = "#d9163b";
+            message.textContent = "Please fill in all fields.";
+            return;
+        }
+
+        message.style.color = "#b45309";
+        message.textContent =
+            "Demo login only. Connect a secure backend to authenticate users.";
+    });
+
+    // Demonstration buttons
+
+    document.getElementById("forgotPassword")
+        .addEventListener("click", function (event) {
+            event.preventDefault();
+
+            message.style.color = "#555";
+            message.textContent =
+                "Password recovery needs to be connected to a backend.";
+        });
+
+    document.getElementById("signupLink")
+        .addEventListener("click", function (event) {
+            event.preventDefault();
+
+            message.style.color = "#555";
+            message.textContent =
+                "Create a separate signup page to register new users.";
+        });
+
+    document.getElementById("googleLogin")
+        .addEventListener("click", function () {
+
+            message.style.color = "#555";
+            message.textContent =
+                "Google sign-in requires Google Identity Services and backend verification.";
+        });
+</script>
+```
+
+</body>
+</html>
