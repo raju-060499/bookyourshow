@@ -12,9 +12,7 @@
     * {
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
-    }
-
+        box-sizing: border-bo
     body {
         font-family: Arial, sans-serif;
         background: #101820;
@@ -495,7 +493,7 @@
             <div class="divider">or</div>
 
             <button type="button"
-                    class="google-button"
+                    class="go'login page  html'ogle-button"
                     id="googleLogin">
                 🌐 Continue with Google
             </button>
@@ -582,4 +580,611 @@
 ```
 
 </body>
-</html>
+</html>><!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>CineBook | Login</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #0b0714;
+        color: white;
+        min-height: 100vh;
+    }
+
+    /* Navigation */
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 22px 7%;
+        background: rgba(11, 7, 20, 0.9);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo {
+        font-size: 27px;
+        font-weight: 800;
+        letter-spacing: -1px;
+    }
+
+    .logo span {
+        color: #ff3155;
+    }
+
+    nav {
+        display: flex;
+        gap: 30px;
+    }
+
+    nav a {
+        color: #c9c4d4;
+        text-decoration: none;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+    nav a:hover {
+        color: #ff3155;
+    }
+
+    .nav-button {
+        padding: 11px 22px;
+        border: 1px solid #ff3155;
+        background: transparent;
+        color: white;
+        border-radius: 25px;
+        cursor: pointer;
+    }
+
+    .nav-button:hover {
+        background: #ff3155;
+    }
+
+    /* Main Layout */
+
+    .main {
+        min-height: calc(100vh - 75px);
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        padding: 55px 7%;
+        gap: 60px;
+        background:
+            radial-gradient(
+                circle at 15% 35%,
+                rgba(111, 35, 180, 0.2),
+                transparent 35%
+            ),
+            radial-gradient(
+                circle at 85% 80%,
+                rgba(255, 49, 85, 0.12),
+                transparent 35%
+            ),
+            #0b0714;
+    }
+
+    /* Left Content */
+
+    .hero {
+        max-width: 570px;
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 9px 15px;
+        background: rgba(255, 49, 85, 0.12);
+        border: 1px solid rgba(255, 49, 85, 0.35);
+        color: #ff718a;
+        border-radius: 30px;
+        font-size: 12px;
+        letter-spacing: 1px;
+        margin-bottom: 25px;
+    }
+
+    .hero h1 {
+        font-size: clamp(40px, 5vw, 66px);
+        line-height: 1.12;
+        margin-bottom: 25px;
+        letter-spacing: -2px;
+    }
+
+    .hero h1 span {
+        background: linear-gradient(90deg, #ff3155, #b56cff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .hero p {
+        color: #aaa4b8;
+        font-size: 17px;
+        line-height: 1.8;
+        max-width: 440px;
+    }
+
+    .stats {
+        display: flex;
+        gap: 45px;
+        margin-top: 45px;
+        flex-wrap: wrap;
+    }
+
+    .stat h3 {
+        font-size: 25px;
+        margin-bottom: 7px;
+    }
+
+    .stat p {
+        font-size: 12px;
+        color: #8f899d;
+    }
+
+    /* Login Card */
+
+    .login-card {
+        width: 100%;
+        max-width: 430px;
+        justify-self: end;
+        padding: 38px;
+        background: rgba(255, 255, 255, 0.045);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 22px;
+        backdrop-filter: blur(15px);
+        box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+    }
+
+    .login-card h2 {
+        font-size: 30px;
+        margin-bottom: 12px;
+    }
+
+    .description {
+        color: #a9a2b8;
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 32px;
+    }
+
+    .form-group {
+        margin-bottom: 22px;
+    }
+
+    label {
+        display: block;
+        font-size: 13px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #e5e0ed;
+    }
+
+    input {
+        width: 100%;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #393044;
+        background: #171020;
+        color: white;
+        font-size: 14px;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    input::placeholder {
+        color: #777084;
+    }
+
+    input:focus {
+        border-color: #ff3155;
+        box-shadow: 0 0 0 3px rgba(255, 49, 85, 0.1);
+    }
+
+    .password-wrapper {
+        position: relative;
+    }
+
+    .password-wrapper input {
+        padding-right: 65px;
+    }
+
+    .toggle {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        background: none;
+        color: #ff718a;
+        cursor: pointer;
+        font-size: 12px;
+    }
+
+    .options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 5px 0 25px;
+        font-size: 12px;
+        gap: 10px;
+    }
+
+    .remember {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        color: #aaa4b8;
+    }
+
+    .remember input {
+        width: auto;
+        accent-color: #ff3155;
+    }
+
+    .forgot {
+        color: #ff718a;
+        text-decoration: none;
+    }
+
+    .login-button {
+        width: 100%;
+        padding: 16px;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+        background: linear-gradient(90deg, #ff3155, #d51e73);
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 8px 25px rgba(255, 49, 85, 0.2);
+    }
+
+    .login-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px rgba(255, 49, 85, 0.35);
+    }
+
+    .divider {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        color: #777084;
+        font-size: 12px;
+        margin: 25px 0;
+    }
+
+    .divider::before,
+    .divider::after {
+        content: "";
+        height: 1px;
+        background: #393044;
+        flex: 1;
+    }
+
+    .google-button {
+        width: 100%;
+        padding: 14px;
+        background: #171020;
+        color: white;
+        border: 1px solid #393044;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .google-button:hover {
+        background: #241a30;
+    }
+
+    .signup {
+        text-align: center;
+        margin-top: 28px;
+        color: #aaa4b8;
+        font-size: 13px;
+    }
+
+    .signup a {
+        color: #ff718a;
+        text-decoration: none;
+        font-weight: bold;
+        margin-left: 5px;
+    }
+
+    #message {
+        font-size: 12px;
+        line-height: 1.6;
+        margin-top: 15px;
+        text-align: center;
+        color: #ff718a;
+    }
+
+    footer {
+        text-align: center;
+        color: #777084;
+        padding: 20px;
+        font-size: 12px;
+        border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Mobile Design */
+
+    @media (max-width: 900px) {
+        .main {
+            grid-template-columns: 1fr;
+            padding: 45px 7%;
+            gap: 45px;
+        }
+
+        .hero {
+            max-width: 650px;
+        }
+
+        .login-card {
+            justify-self: center;
+        }
+
+        nav {
+            display: none;
+        }
+    }
+
+    @media (max-width: 480px) {
+        header {
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 23px;
+        }
+
+        .main {
+            padding: 35px 20px;
+        }
+
+        .hero h1 {
+            font-size: 39px;
+        }
+
+        .hero p {
+            font-size: 15px;
+        }
+
+        .stats {
+            gap: 25px;
+        }
+
+        .login-card {
+            padding: 25px 20px;
+        }
+
+        .login-card h2 {
+            font-size: 26px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- Navigation -->
+
+<header>
+    <div class="logo">CINE<span>BOOK</span></div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Movies</a>
+        <a href="#">Events</a>
+        <a href="#">Offers</a>
+    </nav>
+
+    <button class="nav-button"
+            onclick="document.getElementById('email').focus()">
+        Sign In
+    </button>
+</header>
+
+<!-- Main Section -->
+
+<main class="main">
+
+    <!-- Left Side -->
+
+    <section class="hero">
+
+        <div class="badge">✦ YOUR ENTERTAINMENT DESTINATION</div>
+
+        <h1>
+            Every Show.<br>
+            Every Seat.<br>
+            <span>Every Moment.</span>
+        </h1>
+
+        <p>
+            Your next great experience starts here.
+            Discover blockbuster movies, live concerts,
+            exclusive events and unforgettable entertainment.
+        </p>
+
+        <div class="stats">
+
+            <div class="stat">
+                <h3>500+</h3>
+                <p>Movies & Events</p>
+            </div>
+
+            <div class="stat">
+                <h3>100+</h3>
+                <p>Cities</p>
+            </div>
+
+            <div class="stat">
+                <h3>24/7</h3>
+                <p>Easy Booking</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Right Side -->
+
+    <section class="login-card">
+
+        <h2>Welcome Back 👋</h2>
+
+        <p class="description">
+            Sign in to your account and get ready
+            for your next entertainment experience.
+        </p>
+
+        <form id="loginForm">
+
+            <div class="form-group">
+                <label for="email">Email or Mobile Number</label>
+
+                <input
+                    type="text"
+                    id="email"
+                    placeholder="Enter email or mobile number"
+                    autocomplete="username"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+
+                <div class="password-wrapper">
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <button type="button"
+                            class="toggle"
+                            id="togglePassword">
+                        SHOW
+                    </button>
+                </div>
+            </div>
+
+            <div class="options">
+
+                <label class="remember">
+                    <input type="checkbox" id="remember">
+                    Remember me
+                </label>
+
+                <a href="#" class="forgot" id="forgot">
+                    Forgot password?
+                </a>
+
+            </div>
+
+            <button type="submit" class="login-button">
+                SIGN IN →
+            </button>
+
+        </form>
+
+        <p id="message" role="status" aria-live="polite"></p>
+
+        <div class="divider">OR CONTINUE WITH</div>
+
+        <button class="google-button" id="google" type="button">
+            🌐 &nbsp; Continue with Google
+        </button>
+
+        <p class="signup">
+            New to CineBook?
+            <a href="#" id="signup">Create Account</a>
+        </p>
+
+    </section>
+
+</main>
+
+<footer>
+    © 2026 CineBook · Your next experience awaits.
+</footer>
+
+<script>
+    const password = document.getElementById("password");
+    const message = document.getElementById("message");
+
+    // Show and hide password
+
+    document.getElementById("togglePassword")
+        .addEventListener("click", function () {
+
+            if (password.type === "password") {
+                password.type = "text";
+                this.textContent = "HIDE";
+            } else {
+                password.type = "password";
+                this.textContent = "SHOW";
+            }
+        });
+
+    // Demo login form
+
+    document.getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            message.style.color = "#ff718a";
+
+            message.textContent =
+                "This is a demo login page. Connect a secure backend to sign in.";
+        });
+
+    // Demo action buttons
+
+    document.getElementById("forgot")
+        .addEventListener("click", function (event) {
+            event.preventDefault();
+
+            message.textContent =
+                "Password recovery will be available after backend integration.";
+        });
+
+    document.getElementById("signup")
+        .addEventListener("click", function (event) {
+            event.preventDefault();
+
+            message.textContent =
+                "A registration page can be added as the next step.";
+        });
+
+    document.getElementById("google")
+        .addEventListener("click", function () {
+
+            message.textContent =
+                "Google authentication requires a configured sign-in service.";
+        });
+</script>
+```
+
+</body>
+</html>    
